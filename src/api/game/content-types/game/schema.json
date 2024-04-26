@@ -49,7 +49,12 @@
           "localized": true
         }
       },
-      "type": "blocks"
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     },
     "price": {
       "pluginOptions": {

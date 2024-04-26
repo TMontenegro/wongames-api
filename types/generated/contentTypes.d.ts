@@ -942,7 +942,14 @@ export interface ApiGameGame extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    description: Attribute.Blocks &
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

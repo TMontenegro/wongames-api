@@ -32,6 +32,12 @@
       },
       "type": "uid",
       "required": true
+    },
+    "games": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::game.game",
+      "mappedBy": "publisher"
     }
   }
 }

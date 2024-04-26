@@ -819,6 +819,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    games: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::game.game'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -872,6 +877,11 @@ export interface ApiDeveloperDeveloper extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    games: Attribute.Relation<
+      'api::developer.developer',
+      'manyToMany',
+      'api::game.game'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -901,6 +911,7 @@ export interface ApiGameGame extends Schema.CollectionType {
     singularName: 'game';
     pluralName: 'games';
     displayName: 'game';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -971,6 +982,26 @@ export interface ApiGameGame extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    categories: Attribute.Relation<
+      'api::game.game',
+      'manyToMany',
+      'api::category.category'
+    >;
+    platforms: Attribute.Relation<
+      'api::game.game',
+      'manyToMany',
+      'api::platform.platform'
+    >;
+    developers: Attribute.Relation<
+      'api::game.game',
+      'manyToMany',
+      'api::developer.developer'
+    >;
+    publisher: Attribute.Relation<
+      'api::game.game',
+      'manyToOne',
+      'api::publisher.publisher'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::game.game', 'oneToOne', 'admin::user'> &
@@ -1015,6 +1046,11 @@ export interface ApiPlatformPlatform extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    games: Attribute.Relation<
+      'api::platform.platform',
+      'manyToMany',
+      'api::game.game'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1068,6 +1104,11 @@ export interface ApiPublisherPublisher extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    games: Attribute.Relation<
+      'api::publisher.publisher',
+      'oneToMany',
+      'api::game.game'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
